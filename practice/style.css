@@ -1,0 +1,46 @@
+.topWrapper {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 50%;
+  border: 2px #ff00ff solid;
+  border-radius: 10px;
+}
+
+.bottomWrapper {
+  border: 2px #ff00ff solid;
+  margin: 1em auto;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  box-sizing: content-box;
+  padding: 0.5em;
+}
+
+.result {
+  border: 1px solid rgb(248, 4, 45);
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: 7px;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+.insideWrapper {
+  display: flex;
+  justify-content: space-around;
+  margin: 1em;
+  width: 50%;
+}
+
+.row input,
+.column input {
+  width: 40%;
+}
+
+.button {
+  height: 50%;
+  width: 30%;
+  margin: auto;
+}
