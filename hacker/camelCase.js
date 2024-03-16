@@ -74,8 +74,9 @@ Outputs must be exact (exact spaces and casing).
 
 function processData(input) {
   let line = input.split('\n');
-  for (let w of line) {
-    let arr = w.split(';');
+
+  for (let sentence of line) {
+    let arr = sentence.split(';');
     arr[2] = arr[2].replace(/\r/g, '');
     let word = arr[2].replace(/([a-z])([A-Z])/g, '$1 $2').split(/\s/gm);
     let result = '';
