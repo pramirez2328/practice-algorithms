@@ -5086,3 +5086,40 @@ const Bible = [
     ],
   },
 ];
+
+const books = Bible.map((i) => Object.entries(i)[0]);
+
+const fullBible = [];
+let currentBook,
+  index = 0;
+for (let i of Bible) {
+  let obj = { ...i };
+  currentBook = books[index][1];
+  index++;
+
+  for (let k = 0; k < obj.chapters.length; k++) {
+    let versesArray = [];
+    let versesLength = obj.chapters[k].verses;
+    for (let j = 0; j < versesLength; j++) {
+      let temp = {};
+      temp.previous =
+        j !== 0 ? `${currentBook}${k + 1}.${j}` : k !== 0 ? `${currentBook}${k}.${obj.chapters[k - 1].verses}` : '';
+
+      temp.current = `${currentBook}${k + 1}.${j + 1}`;
+      temp.next = j + 1 !== versesLength ? `${currentBook}${k + 1}.${j + 2}` : `${currentBook}${k + 2}.1`;
+      versesArray.push(temp);
+    }
+    obj.chapters[k]['versesArr'] = versesArray;
+  }
+  fullBible.push(obj);
+}
+
+import fs from 'fs';
+
+fs.writeFile('./lastOject.json', JSON.stringify(fullBible, null, 2), (err) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log('Data has been written to allBooks.json');
+});
